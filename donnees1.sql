@@ -21,3 +21,10 @@ LEFT JOIN team ON e.team_id =team.id
 SELECT count(*) as total_employee ,e.contract_type 
 FROM employee e 
 GROUP BY e.contract_type;
+
+
+--5. Afficher le nombre d’employés en congé aujourd'hui. La période de congé s'étend de start_date inclus jusqu’à end_date inclus.
+SELECT COUNT(DISTINCT e.id) AS employees_on_leave
+FROM employee e
+JOIN employee_leave l ON l.employee_id = e.id
+WHERE CURRENT_DATE BETWEEN l.start_date AND l.end_date;
