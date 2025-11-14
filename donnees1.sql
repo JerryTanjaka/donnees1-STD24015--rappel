@@ -28,3 +28,11 @@ SELECT COUNT(DISTINCT e.id) AS employees_on_leave
 FROM employee e
 JOIN employee_leave l ON l.employee_id = e.id
 WHERE CURRENT_DATE BETWEEN l.start_date AND l.end_date;
+
+
+--6. Afficher l’id, le nom, le prénom de tous les employés + le nom de leur équipe qui sont en congé aujourd’hui. Pour rappel, la end_date est incluse dans le congé, l’employé ne revient que le lendemain.
+SELECT e.id, e.first_name,e.last_name, team.name 
+FROM employee e 
+LEFT JOIN team on e.team_id = team.id 
+JOIN employee_leave l ON l.employee_id = e.id
+WHERE CURRENT_DATE BETWEEN l.start_date AND l.end_date; 
