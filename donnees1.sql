@@ -16,3 +16,8 @@ SELECT l.id,l.start_date,l.end_date,e.first_name,e.last_name,team.name
 FROM employee_leave l 
 JOIN employee e ON  e.id = l.employee_id 
 LEFT JOIN team ON e.team_id =team.id
+
+--4. Affichez  le nombre d’employés par contract_type, vous devez afficher le type de contrat, et le nombre d’employés associés.
+SELECT count(*) as total_employee ,e.contract_type 
+FROM employee e 
+GROUP BY e.contract_type;
